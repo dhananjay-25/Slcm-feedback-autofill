@@ -12,4 +12,14 @@ Tired of manually clicking “Yes” for every feedback question on the SLCM por
 4. Paste the following code and press Enter:
 
 ```javascript
+// Select inputs with value="Yes"
 document.querySelectorAll('input[type="radio"][value="Yes"]').forEach(r => r.click());
+
+// Also check labels with "Yes" text
+document.querySelectorAll('label').forEach(label => {
+    if (label.textContent.trim().toLowerCase().includes("yes")) {
+        const input = label.querySelector('input[type="radio"]');
+        if (input && !input.checked) input.click();
+    }
+});
+```
